@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/project")
+@CrossOrigin("http://localhost:3000")
 public class ProjectController {
     private final ProjectService projectService;
 
