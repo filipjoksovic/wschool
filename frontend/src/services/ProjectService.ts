@@ -1,22 +1,34 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
+import {Project} from "../models/ProjectModel";
 
 class ProjectService {
-	public backendURL = process.env.REACT_APP_BACKEND_URL || '';
-	public projectsEndpoint =
-		process.env.REACT_APP_BACKEND_PROJECTS_ENDPOINT || '';
+    public backendURL = process.env.REACT_APP_BACKEND_URL || '';
+    public projectsEndpoint =
+        process.env.REACT_APP_BACKEND_PROJECTS_ENDPOINT || '';
 
-	public endpoint = this.backendURL + this.projectsEndpoint;
+    public endpoint = this.backendURL + this.projectsEndpoint;
 
-	constructor() {}
+    constructor() {
+    }
 
-	public getAllProjects(): Promise<AxiosResponse<any, any>> {
-		return axios({ url: this.endpoint, method: 'get' });
-	}
+    public getAllProjects(): Promise<AxiosResponse<any, any>> {
+        return axios({url: this.endpoint, method: 'get'});
+    }
 
-	public createProject() {}
+    public createProject(project:Project) {
+        return axios({url: this.endpoint, method: 'post', data: project})
 
-	public deleteProject() {}
-	public updateProject() {}
-	public getProject() {}
+    }
+
+    public deleteProject() {
+    }
+
+    public updateProject(project: Project) {
+        return axios({url: this.endpoint, method: 'post', data: project})
+    }
+
+    public getProject() {
+    }
 }
-export { ProjectService };
+
+export {ProjectService};

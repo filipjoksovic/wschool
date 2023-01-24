@@ -1,7 +1,7 @@
 export interface Project {
 	id?: number;
 	name: string;
-	dueDate: Date;
+	dueDate: string;
 	description: string;
 }
 export {};

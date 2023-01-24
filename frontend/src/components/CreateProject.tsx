@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Project } from '../models/ProjectModel';
+import {ProjectService} from "../services/ProjectService";
 
 const CreateProject = () => {
+	const projectService = new ProjectService();
 	const [projectName, setProjectName] = useState('');
 	const [dueDate, setDueDate] = useState('');
 	const [projectDescription, setProjectDescription] = useState('');
@@ -9,10 +11,10 @@ const CreateProject = () => {
 	const handleSubmit = () => {
 		const projectObject: Project = {
 			name: projectName,
-			dueDate: new Date(dueDate),
+			dueDate: new Date(dueDate).toISOString(),
 			description: projectDescription,
 		};
-		console.log(projectObject);
+		projectService.createProject(projectObject).then();
 	};
 	return (
 		<>

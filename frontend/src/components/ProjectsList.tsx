@@ -17,10 +17,7 @@ const ProjectsList = () => {
             });
     }, []);
 
-    const testList = [1, 2, 3, 4, 5].map(element => {
-        return <p>123</p>
-    })
-    console.log(testList)
+
     return (
         <div className='container'>
             {projects ? (
