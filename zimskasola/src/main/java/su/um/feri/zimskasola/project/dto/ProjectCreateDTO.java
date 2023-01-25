@@ -15,9 +15,9 @@ public class ProjectCreateDTO {
     public String description;
     public String dueDate;
 
-    public Project toProject(){
-        LocalDateTime convertedDate = LocalDateTime.now();
-        return new Project(this.name,this.description, convertedDate);
+    public Project toProject() {
+        LocalDateTime convertedDate = LocalDateTime.parse(this.dueDate);
+        return new Project(this.name, this.description, convertedDate);
     }
 
 }
