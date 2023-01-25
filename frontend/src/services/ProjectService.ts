@@ -15,16 +15,17 @@ class ProjectService {
         return axios({url: this.endpoint, method: 'get'});
     }
 
-    public createProject(project:Project) {
+    public createProject(project: Project) {
         return axios({url: this.endpoint, method: 'post', data: project})
 
     }
 
-    public deleteProject() {
+    public deleteProject(id: number) {
+        return axios({url: `${this.endpoint}/${id}`, method: "delete"})
     }
 
     public updateProject(project: Project) {
-        return axios({url: this.endpoint, method: 'post', data: project})
+        return axios({url: this.endpoint, method: 'put', data: project})
     }
 
     public getProject() {

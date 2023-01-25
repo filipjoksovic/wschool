@@ -36,8 +36,14 @@ public class ProjectService {
         return this.projectRepository.save(project);
     }
 
-    public void delete(Project project) {
-        this.projectRepository.delete(project);
+    public Project delete(int id) {
+        Optional<Project> found = projectRepository.findById(id);
+        if (found.isPresent()) {
+            this.projectRepository.delete(found.get());
+            return found.get();
+        } else {
+            return null;
+        }
     }
 
 }

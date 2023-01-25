@@ -40,10 +40,9 @@ public class ProjectController {
         return this.projectService.update(project);
     }
 
-    @DeleteMapping
-    public Project delete(@RequestBody Project project) {
-        this.projectService.delete(project);
-        return project;
+    @DeleteMapping("/{id}")
+    public Project delete(@PathVariable int id) {
+        return this.projectService.delete(id);
     }
 
 }

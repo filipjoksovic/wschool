@@ -4,11 +4,13 @@ import ProjectsList from '../components/ProjectsList';
 import {ProjectService} from "../services/ProjectService";
 import {AxiosResponse} from "axios";
 import {Project} from "../models/ProjectModel";
+import ProjectRow from "../components/ProjectRow";
 
 const ProjectsPage = () => {
 
     const projectService = new ProjectService();
     const [projects, setProjects] = useState<Project[]>([]);
+    const [projectToEdit, setProjectToEdit] = useState<Project | null>(null);
 
     useEffect(() => {
         console.log("use effect called")
@@ -25,13 +27,45 @@ const ProjectsPage = () => {
         setProjects([...projects, project])
         console.log(projects);
     }
+    const handleProjectUpdated = (project: Project) => {
+        const updatedProjects = projects.map((p: Project) => {
+            if (p.id === project.id) {
+                return project;
+            }
+            return p;
+        })
+
+        setProjects([...updatedProjects]);
+        setProjectToEdit(null);
+    }
+
+    function selectProjectForEdit(project: Project) {
+        console.log("Received project on page component", project);
+        setProjectToEdit({...project} as Project);
+        console.log(projectToEdit);
+    }
+
+    const deleteProject = (project: Project) => {
+        projectService.deleteProject(project?.id as number).then((response: any) => {
+            console.log("project deleted");
+            const updatedProjects = projects.filter((p: Project) =>
+                p.id !== project.id
+            )
+            setProjects([...updatedProjects]);
+            setProjectToEdit(null);
+        })
+    }
 
     return (
         <>
+            {console.log(projectToEdit)}
             {projects ?
                 <>
-                    <CreateProject onProjectCreated={handleProjectCreated}></CreateProject>
-                    <ProjectsList projects={projects}></ProjectsList>
+                    <CreateProject onProjectCreated={handleProjectCreated}
+                                   onProjectUpdated={handleProjectUpdated}
+                                   projectToEdit={projectToEdit}></CreateProject>
+                    <ProjectsList projects={projects} onProjectSelected={selectProjectForEdit}
+                                  onProjectDelete={deleteProject}></ProjectsList>
                 </>
                 : <>Loading</>}
 

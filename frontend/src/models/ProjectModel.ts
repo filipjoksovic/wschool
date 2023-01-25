@@ -1,5 +1,5 @@
 export interface Project {
-	id?: number;
+	id?: number | undefined;
 	name: string;
 	dueDate: string;
 	description: string;
