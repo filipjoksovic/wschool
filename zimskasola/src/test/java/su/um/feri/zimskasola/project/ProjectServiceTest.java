@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //@ExtendWith(SpringExtension.class)
 //@WebMvcTest(ProjectController.class)
 @SpringBootTest
+@ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class ProjectServiceTest {
 
-    static LocalDateTime fixedDate = LocalDateTime.of(2023, 1, 24, 1, 1);
+    static String fixedDate = "2011-10-05T14:48:00.000Z";
     @Autowired
     private ProjectService projectService;
 
@@ -56,7 +57,7 @@ class ProjectServiceTest {
 
     @Test
     void save() {
-        LocalDateTime dateToSave = fixedDate;
+        String dateToSave = fixedDate;
         Project newProject = new Project("Project 4", "Project description 4", dateToSave);
         Project saved = projectService.save(newProject);
         assertEquals(saved.getId(), 4);
@@ -67,7 +68,7 @@ class ProjectServiceTest {
 
     @Test
     void update() {
-        LocalDateTime updatedDate = fixedDate.minusDays(10);
+        String updatedDate = "2011-11-05T14:48:00.000Z";
         Project toUpdate = new Project(3, "Updated project 3", "Updated description", updatedDate);
         Project updated = projectService.update(toUpdate);
         assertThat(updated, samePropertyValuesAs(toUpdate));

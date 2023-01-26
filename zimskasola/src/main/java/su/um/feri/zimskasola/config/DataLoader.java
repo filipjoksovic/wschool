@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import su.um.feri.zimskasola.project.Project;
 import su.um.feri.zimskasola.project.ProjectRepository;
@@ -12,6 +13,7 @@ import su.um.feri.zimskasola.task.TaskRepository;
 
 import java.util.List;
 
+@Profile("!test")
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements ApplicationRunner {

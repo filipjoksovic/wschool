@@ -31,6 +31,7 @@ public class Project {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        this.tasks = new ArrayList<>();
     }
 
     public Project(int id, String name, String description, String dueDate) {
@@ -38,6 +39,8 @@ public class Project {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        this.tasks = new ArrayList<>();
+
     }
 
 
