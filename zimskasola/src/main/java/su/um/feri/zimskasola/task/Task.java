@@ -1,39 +1,34 @@
-package su.um.feri.zimskasola.project;
+package su.um.feri.zimskasola.task;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import su.um.feri.zimskasola.task.Task;
+import su.um.feri.zimskasola.project.Project;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Project {
-
+public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String description;
     private String dueDate;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks = new ArrayList<>();
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "project_id")
+    private Project project;
 
-    public List<Task> getTasks() {
-        return tasks;
+    public Project getProject() {
+        return project;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public Project(String name, String description, String dueDate) {
-        this.name = name;
-        this.description = description;
-        this.dueDate = dueDate;
-    }
 
-    public Project(int id, String name, String description, String dueDate) {
+    public Task(Integer id, String name, String description, String dueDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -41,14 +36,25 @@ public class Project {
     }
 
 
-    public Project() {
+    public Task() {
     }
 
-    public int getId() {
+    public Task(String name, String description, String dueDate) {
+        this.name = name;
+        this.description = description;
+        this.dueDate = dueDate;
+    }
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -75,5 +81,6 @@ public class Project {
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
+
 
 }

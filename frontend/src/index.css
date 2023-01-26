@@ -92,15 +92,33 @@ button.btn {
 .projects-wrapper > .project-wrapper {
     display: flex;
     /*width: 100%;*/
-    margin-block: 1rem;
+    /*margin-block: 1rem;*/
+    margin-top: 1rem;
     justify-content: space-around;
     border: 1px solid #8437cc;
     padding: 1rem;
     background: #8437cc;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 1rem;
     color: white;
 }
 
 .container {
     padding-inline: 1rem;
+}
+
+.tasks-wrapper {
+    display: flex;
+    width: 80%;
+    padding: 1rem;
+    margin-left: auto;
+    border-radius: 0 0rem 1rem 1rem;
+    background: #5c258f;
+}
+
+.task-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    justify-content: space-around;
 }

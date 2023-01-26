@@ -1,17 +1,16 @@
 package su.um.feri.zimskasola.project;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/project")
 @CrossOrigin("http://localhost:3000")
-public class ProjectController {
+public class ProjectController implements Serializable {
     private final ProjectService projectService;
 
     @Autowired
@@ -32,6 +31,7 @@ public class ProjectController {
 
     @PostMapping
     public Project save(@RequestBody Project project) {
+//        project.setDueDate(LocalDateTime.now());
         return this.projectService.save(project);
     }
 
