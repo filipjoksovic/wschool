@@ -3,8 +3,7 @@ import CreateProject from '../components/CreateProject';
 import ProjectsList from '../components/ProjectsList';
 import {ProjectService} from "../services/ProjectService";
 import {AxiosResponse} from "axios";
-import {Project} from "../models/ProjectModel";
-import ProjectRow from "../components/ProjectRow";
+import { Project } from '../models/ProjectModel';
 import CreateTask from "../components/tasks/CreateTask";
 
 const ProjectsPage = () => {

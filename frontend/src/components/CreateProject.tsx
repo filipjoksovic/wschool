@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Project} from '../models/ProjectModel';
-import {ProjectService} from "../services/ProjectService";
-import {AxiosPromise} from "axios";
+import { ProjectService } from '../services/ProjectService';
 
 interface ICreateProjectProps {
     onProjectCreated: any;
@@ -53,9 +52,15 @@ const CreateProject = (props: ICreateProjectProps) => {
     return (
         <>
             {!projectToEdit ? <h2>Create project</h2> : <h2>Edit project</h2>}
-            <input hidden name="id" type="number" value={projectId} onChange={(e) => {
-                setProjectId(Number(e.target.value))
-            }}/>
+            <input
+                hidden
+                name="id"
+                type="number"
+                value={projectId}
+                onChange={(e: any) => {
+                    setProjectId(Number(e.target.value));
+                }}
+            />
             <div className="d-flex">
                 <div className="form-group">
                     <label htmlFor="projectName">Project Name</label>
@@ -65,7 +70,7 @@ const CreateProject = (props: ICreateProjectProps) => {
                         className="form-control"
                         id="projectName"
                         value={projectName}
-                        onChange={(e) => setProjectName(e.target.value)}
+                        onChange={e => setProjectName(e.target.value)}
                     />
                 </div>
                 <div className="form-group">
@@ -75,8 +80,8 @@ const CreateProject = (props: ICreateProjectProps) => {
                         id="dueDate"
                         name="dueDate"
                         className="form-control"
-                        onChange={(e) => setDueDate(e.target.value)}
-                        value={dueDate ? new Date(dueDate).toISOString().split("T")[0] : ""}
+                        onChange={e => setDueDate(e.target.value)}
+                        value={dueDate ? new Date(dueDate).toISOString().split('T')[0] : ''}
                     />
                 </div>
             </div>
@@ -86,18 +91,13 @@ const CreateProject = (props: ICreateProjectProps) => {
                     name="projectDescription"
                     id="projectDescription"
                     className="form-control"
-                    onChange={(e) => setProjectDescription(e.target.value)}
-                    value={projectDescription}
-                ></textarea>
+                    onChange={e => setProjectDescription(e.target.value)}
+                    value={projectDescription}></textarea>
             </div>
-            <button
-                className="btn btn-primary d-block mx-auto"
-                onClick={handleSubmit}
-            >
-                {(projectToEdit ? "Edit" : "Create") + " project"}
+            <button className="btn btn-primary d-block mx-auto" onClick={handleSubmit}>
+                {(projectToEdit ? 'Edit' : 'Create') + ' project'}
             </button>
         </>
-
     );
 };
 

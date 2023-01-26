@@ -2,9 +2,9 @@ import {useState} from "react";
 import {Task} from "../../models/TaskModel";
 import {TaskService} from "../../services/TaskService";
 
-interface ICreateTaskProps {
-    project_id?: number;
-}
+// interface ICreateTaskProps {
+//     project_id?: number;
+// }
 
 const CreateTask = () => {
     const defaultTaskState: Task = {

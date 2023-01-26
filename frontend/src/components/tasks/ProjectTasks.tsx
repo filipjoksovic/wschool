@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import {TaskService} from "../../services/TaskService";
 import {Project} from "../../models/ProjectModel";
 import {Task} from "../../models/TaskModel";
-import ProjectTask from "./ProjectTask";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import ProjectTask from './ProjectTask';
 
 
 interface IProjectTasksProps {

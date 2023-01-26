@@ -8,9 +8,6 @@ class ProjectService {
 
     public endpoint = this.backendURL + this.projectsEndpoint;
 
-    constructor() {
-    }
-
     public getAllProjects(): Promise<AxiosResponse<any, any>> {
         return axios({url: this.endpoint, method: 'get'});
     }
