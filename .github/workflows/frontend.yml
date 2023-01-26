@@ -28,7 +28,7 @@ jobs:
       
   push_to_dh:
      runs-on: ubuntu-20.04
-      needs:[build]
+       needs:build
      steps:
         - name: checkout repo
           uses: actions/checkout@v2
