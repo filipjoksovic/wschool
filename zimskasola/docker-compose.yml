@@ -1,0 +1,25 @@
+version: "3"
+services:
+  server:
+    image: zimskasola
+    ports:
+      - "8080:8080"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/zimskasola?useSSL=false
+    networks:
+      - springmysql-net
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:5.7
+    networks:
+      - springmysql-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=zimskasola
+      - MYSQL_USER=filip
+      - MYSQL_PASSWORD=filip
+
+networks:
+  springmysql-net:
