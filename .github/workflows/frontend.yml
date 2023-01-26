@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v3
@@ -25,8 +25,9 @@ jobs:
       working-directory: frontend/
     - run: npm run build --if-present
       working-directory: frontend/
+      
   push_to_dh:
-     runs-on: ubuntu-latest
+     runs-on: ubuntu-20.04
       needs:[build]
      steps:
         - name: checkout repo
