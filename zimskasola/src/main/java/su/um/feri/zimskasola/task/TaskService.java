@@ -8,6 +8,7 @@ import su.um.feri.zimskasola.project.ProjectRepository;
 import su.um.feri.zimskasola.task.dto.TaskCreateDTO;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -43,8 +44,27 @@ public class TaskService {
         return null;
     }
 
-    public Task update(Task task) {
-        return repository.save(task);
+    public Task update(TaskCreateDTO taskDto) {
+        Optional<Project> project = projectRepository.findById(taskDto.project_id);
+        if (project.isPresent()) {
+            Task task = TaskCreateDTO.fromDTO(taskDto);
+            Task createdTask = repository.save(task);
+            Project found = project.get();
+            for (Task t : found.getTasks()) {
+                if (Objects.equals(t.getId(), task.getId())) {
+                    t.setName(task.getName());
+                    t.setDescription(task.getDescription());
+                    t.setDueDate(task.getDueDate());
+                    break;
+                }
+            }
+//            found.getTasks().stream().(t->t.id == taskDto.id);
+            Project updated = projectRepository.save(found);
+            createdTask.setProject(updated);
+            repository.save(createdTask);
+            return task;
+        }
+        return null;
     }
 
     public Task delete(int id) {

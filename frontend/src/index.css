@@ -13,9 +13,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    background: #1c1c1c;
-    color: white;
+    /*background: #1c1c1c;*/
+    color: #1c1c1c;
 
+}
+textarea{
+    resize: vertical;
 }
 
 code {
@@ -90,7 +93,12 @@ button.btn {
 }
 
 .projects-wrapper > .project-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-areas: "name date"
+                            "description description"
+                            "edit delete";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     /*width: 100%;*/
     /*margin-block: 1rem;*/
     margin-top: 1rem;
@@ -100,6 +108,33 @@ button.btn {
     background: #8437cc;
     border-radius: 1rem 1rem 0 1rem;
     color: white;
+    gap: 2rem;
+}
+
+.project-name {
+    grid-area: name;
+}
+
+.project-date {
+    grid-area: date;
+    text-align: end;
+}
+
+.project-description {
+    grid-area: description;
+}
+
+.project-edit {
+    grid-area: edit;
+    width: fit-content;
+    margin: auto;
+
+}
+
+.project-delete {
+    grid-area: delete;
+    width: fit-content;
+    margin: auto;
 }
 
 .container {
@@ -108,6 +143,10 @@ button.btn {
 
 .tasks-wrapper {
     display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
     width: 80%;
     padding: 1rem;
     margin-left: auto;
@@ -120,5 +159,22 @@ button.btn {
     width: 100%;
     align-items: center;
 
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.invisInput {
+    background: transparent;
+    outline: none;
+    border: rgba(0, 0, 0, 0);
+    color: white;
+    padding: .75rem 2rem;
+    transition: 250ms ease-in-out border, 250ms ease-in-out background-color, 250ms ease-in-out border-radius;
+    border-radius: 0rem;
+}
+
+.invisInput:focus {
+    outline: 1px solid #461e6b;
+    border-radius: .5rem;
+    background-color: #8437cc;
+
 }

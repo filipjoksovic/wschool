@@ -35,8 +35,8 @@ public class TaskController {
     }
 
     @PutMapping
-    public Task updateTask(@RequestBody Task task) {
-        return this.taskService.update(task);
+    public Task updateTask(@RequestBody TaskCreateDTO taskCreateDTO) {
+        return this.taskService.update(taskCreateDTO);
     }
 
     @DeleteMapping("/{id}")

@@ -3,6 +3,7 @@ export interface Task {
     name: string;
     description: string | undefined;
     dueDate: string | undefined;
+    project_id: number | undefined;
 
 }
 

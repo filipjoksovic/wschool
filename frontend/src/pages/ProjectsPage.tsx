@@ -5,6 +5,7 @@ import {ProjectService} from "../services/ProjectService";
 import {AxiosResponse} from "axios";
 import {Project} from "../models/ProjectModel";
 import ProjectRow from "../components/ProjectRow";
+import CreateTask from "../components/tasks/CreateTask";
 
 const ProjectsPage = () => {
 
@@ -61,6 +62,7 @@ const ProjectsPage = () => {
             {console.log(projectToEdit)}
             {projects ?
                 <>
+                    <CreateTask></CreateTask>
                     <CreateProject onProjectCreated={handleProjectCreated}
                                    onProjectUpdated={handleProjectUpdated}
                                    projectToEdit={projectToEdit}></CreateProject>

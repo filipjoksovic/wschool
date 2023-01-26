@@ -16,7 +16,8 @@ export class TaskService {
     }
 
     public updateTask(task: Task) {
-        return axios({url: this.endpoint, method: "put"})
+        console.log(task)
+        return axios({url: this.endpoint, method: "put", data: task})
     }
 
     public deleteTask(task: Task) {
@@ -27,6 +28,10 @@ export class TaskService {
         return axios({url: `${this.endpoint}/${task.id}`, method: 'get'})
     }
 
+    saveTask(task: Task) {
+        console.log(task);
+        return axios({url: this.endpoint, method: "post", data: task})
+    }
 }
 
 export {};

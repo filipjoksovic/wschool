@@ -10,7 +10,11 @@ public class TaskCreateDTO {
     public int project_id;
 
     public static Task fromDTO(TaskCreateDTO dto) {
-        return new Task(dto.name, dto.description, dto.dueDate);
+        Task t = new Task(dto.name, dto.description, dto.dueDate);
+        if (dto.id != -1) {
+            t.setId(dto.id);
+        }
+        return t;
     }
 
 }

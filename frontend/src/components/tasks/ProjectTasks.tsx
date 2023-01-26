@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {TaskService} from "../../services/TaskService";
 import {Project} from "../../models/ProjectModel";
 import {Task} from "../../models/TaskModel";
+import ProjectTask from "./ProjectTask";
 
 interface IProjectTasksProps {
     project: Project;
@@ -25,13 +26,7 @@ const ProjectTasks = (props: IProjectTasksProps) => {
         {tasks.length > 0 ?
             <div className="tasks-wrapper">
                 {tasks.map((task: Task) => {
-                        return <div className="task-wrapper">
-                            <div className="task-name">{task.name}</div>
-                            <div className="task-description">{task.description}</div>
-                            <div
-                                className="task-due-date">{task.dueDate ? new Date(task.dueDate as string).toLocaleDateString() : "No due date"}</div>
-
-                        </div>
+                        return <ProjectTask key={task.id} task={task}></ProjectTask>
                     }
                 )
                 }
