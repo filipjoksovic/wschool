@@ -21,7 +21,7 @@ export class TaskService {
     }
 
     public deleteTask(task: Task) {
-        return axios({url: this.endpoint, method: "delete"})
+        return axios({url: `${this.endpoint}/${task.id}`, method: "delete"})
     }
 
     public getTask(task: Task) {

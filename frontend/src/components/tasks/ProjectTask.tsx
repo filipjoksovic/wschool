@@ -1,12 +1,16 @@
 import {Task} from "../../models/TaskModel";
 import {useEffect, useState} from "react";
 import {TaskService} from "../../services/TaskService";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 interface IProjectTaskProps {
-    task: Task
+    task: Task;
+    onTaskDelete:any;
 }
 
 const ProjectTask = (props: IProjectTaskProps) => {
+
     const [task, setTask] = useState<Task>(props.task);
     const taskService: TaskService = new TaskService();
     const updateTask = () => {
@@ -16,6 +20,11 @@ const ProjectTask = (props: IProjectTaskProps) => {
     useEffect(() => {
         console.log(task);
     })
+
+    const deleteTask = ()=>{
+        console.log("deleting task")
+        props.onTaskDelete(task);
+    }
 
     return <div className="task-wrapper">
         <input className="task-name invisInput" value={task.name} onChange={(e) =>
@@ -38,6 +47,9 @@ const ProjectTask = (props: IProjectTaskProps) => {
             }
             onBlur={updateTask}
         />
+        <div className="delete-task">
+            <FontAwesomeIcon icon={faTimes} onClick={deleteTask}></FontAwesomeIcon>
+        </div>
 
     </div>
 

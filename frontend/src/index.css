@@ -17,7 +17,8 @@ body {
     color: #1c1c1c;
 
 }
-textarea{
+
+textarea {
     resize: vertical;
 }
 
@@ -160,6 +161,7 @@ button.btn {
     align-items: center;
 
     justify-content: space-between;
+    position: relative;
 }
 
 .invisInput {
@@ -178,3 +180,29 @@ button.btn {
     background-color: #8437cc;
 
 }
+
+.task-wrapper:hover > .delete-task {
+    visibility: visible;
+    opacity: 1;
+}
+
+.delete-task {
+    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100rem;
+    text-align: center;
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    cursor: pointer;
+    font-size: larger;
+    transition: 250ms ease-in-out all;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff3700;
+}
+

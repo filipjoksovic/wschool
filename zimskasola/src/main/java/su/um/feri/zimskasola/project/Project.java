@@ -16,7 +16,7 @@ public class Project {
     private String description;
     private String dueDate;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 
     public List<Task> getTasks() {

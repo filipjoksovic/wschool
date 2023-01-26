@@ -3,6 +3,8 @@ import {TaskService} from "../../services/TaskService";
 import {Project} from "../../models/ProjectModel";
 import {Task} from "../../models/TaskModel";
 import ProjectTask from "./ProjectTask";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 
 interface IProjectTasksProps {
     project: Project;
@@ -22,11 +24,17 @@ const ProjectTasks = (props: IProjectTasksProps) => {
         });
     }, [])
 
+    const deleteTask = (task: Task) => {
+        taskService.deleteTask(task).then((response: any) => {
+            console.log(response.data);
+        })
+    }
+
     return <>
         {tasks.length > 0 ?
             <div className="tasks-wrapper">
                 {tasks.map((task: Task) => {
-                        return <ProjectTask key={task.id} task={task}></ProjectTask>
+                        return <ProjectTask key={task.id} task={task} onTaskDelete={deleteTask}></ProjectTask>
                     }
                 )
                 }

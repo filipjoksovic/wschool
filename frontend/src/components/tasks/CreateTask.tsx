@@ -27,15 +27,17 @@ const CreateTask = () => {
     }
 
     return <>
-        <div className="form-group">
-            <label htmlFor="task-name">Task name</label>
-            <input type="text" className="form-control" name="task-name" id="task-name"
-                   onChange={(e) => setTask({...task, name: e.target.value} as Task)} value={task?.name}/>
-        </div>
-        <div className="form-group">
-            <label htmlFor="task-date">Due date</label>
-            <input type="date" className="form-control" name="task-date" id="task-date" value={task?.dueDate}
-                   onChange={(e) => setTask({...task, dueDate: e.target.value} as Task)}/>
+        <div className="d-flex">
+            <div className="form-group">
+                <label htmlFor="task-name">Task name</label>
+                <input type="text" className="form-control" name="task-name" id="task-name"
+                       onChange={(e) => setTask({...task, name: e.target.value} as Task)} value={task?.name}/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="task-date">Due date</label>
+                <input type="date" className="form-control" name="task-date" id="task-date" value={task?.dueDate}
+                       onChange={(e) => setTask({...task, dueDate: e.target.value} as Task)}/>
+            </div>
         </div>
         <div className="form-group">
             <label htmlFor="task-description">Task description</label>

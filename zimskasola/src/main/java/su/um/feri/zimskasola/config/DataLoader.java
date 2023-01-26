@@ -36,13 +36,13 @@ public class DataLoader implements ApplicationRunner {
 
 
         t1.setProject(p1);
-        t2.setProject(p2);
+        t2.setProject(p1);
         t3.setProject(p3);
         t4.setProject(p4);
         t5.setProject(p5);
 
         p1.getTasks().add(t1);
-        p2.getTasks().add(t2);
+        p1.getTasks().add(t2);
         p3.getTasks().add(t3);
         p4.getTasks().add(t4);
         p5.getTasks().add(t5);

@@ -70,6 +70,12 @@ public class TaskService {
     public Task delete(int id) {
         Optional<Task> found = repository.findById(id);
         if (found.isPresent()) {
+            Optional<Project> pr = projectRepository.findById(found.get().getProject().getId());
+            if (pr.isPresent()) {
+                Project project = pr.get();
+                project.getTasks().remove(found.get());
+                projectRepository.save(project);
+            }
             repository.delete(found.get());
             return found.get();
         }
