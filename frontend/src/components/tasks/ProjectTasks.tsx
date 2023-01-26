@@ -19,9 +19,9 @@ const ProjectTasks = (props: IProjectTasksProps) => {
         console.log(props.project.id);
         taskService.getTasksForProject(props.project.id as number).then((response: any) => {
             setTasks(response.data);
-            console.log(response.data)
+            console.log(response.data);
         });
-    }, [])
+    });
 
     const deleteTask = (task: Task) => {
         taskService.deleteTask(task).then((response: any) => {

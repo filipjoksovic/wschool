@@ -13,13 +13,11 @@ const ProjectsPage = () => {
     const [projectToEdit, setProjectToEdit] = useState<Project | null>(null);
 
     useEffect(() => {
-        console.log("use effect called")
-        projectService
-            .getAllProjects()
-            .then((response: AxiosResponse<any, any>) => {
-                setProjects(response.data);
-            });
-    }, []);
+        console.log('use effect called');
+        projectService.getAllProjects().then((response: AxiosResponse<any, any>) => {
+            setProjects(response.data);
+        });
+    });
 
     const handleProjectCreated = (project: Project) => {
         console.log("Project created")
